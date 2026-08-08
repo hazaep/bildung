@@ -1,0 +1,239 @@
+plantilla: "Bildung - Evaluación de Experimentos y Proyectos"
+version: "1.2"
+filosofia: "No evaluar si una idea es buena. Evaluar si merece recursos."
+
+informacion_general:
+  nombre: docker-server
+  categoria: 
+  fecha: 06-08-2026
+  ultima_modificacion:
+  nivel_actual:
+    opciones:
+      - 1-workspace
+      - 2-modelado
+      - 3-dev
+      - 4-activos
+      - 5-infraestructura
+      - 6-archivo
+    valor: 5-infraestructura
+  nivel_objetivo:
+    opciones:
+      - activo
+      - infraestructura
+      - mariposa
+    valor: infraestructura
+  autor: "Hazael Escandon"
+
+proposito:
+  problema_que_resuelve:
+    - "Orquestacion y exposicion de servicios"
+  por_que_existe:
+    - "Para gestionar y exponer servicios y apps"
+
+regla_de_convergencia:
+  mision: "Transformar complejidad en libertad."
+  como_contribuye:
+    - "Servicios autoalojados"
+    - "un extenso abanico de opciones"
+    - "despliegue y exposicion de servicios simple"
+  libertad_que_genera:
+    tipo:
+      tiempo: false
+      energia: false
+      dinero: false
+      conocimiento: false
+      autonomia: true
+      opcionalidad: true
+      escalabilidad: true
+  complejidad_que_elimina: 
+    - "configurar exposicion de servicios"
+
+direcciones_estrategicas:
+  como_aporta:
+    escala: [0, 1, 2, 3, 4, 5]
+    valores:
+      capital: 0
+      conocimiento: 1
+      sistemas: 3
+      ecosistema: 5
+      sostenibilidad: 4
+  justificacion:
+    capital:
+    conocimiento:
+    sistemas:
+    ecosistema:
+    sostenibilidad:
+
+analisis_de_desbloqueo:
+  que_desbloquea:
+    ejemplo: "Aprender Docker → Contenedores → Despliegue → Servidores → Arquitectura distribuida → DevOps"
+    respuesta:
+  valor_de_desbloqueo:
+    escala:
+      1: Aislado
+      2: "Poco reutilizable"
+      3: Útil
+      4: Multiplicador
+      5: "Multiplicador masivo"
+    valor:
+
+energia:
+  requerida:
+    escala:
+      1: "Muy baja"
+      2: Baja
+      3: Moderada
+      4: Alta
+      5: "Muy alta"
+    valor:
+  compatibilidad_con_estado_actual:
+    escala:
+      1: "Me drena"
+      2: "Difícil de sostener"
+      3: Neutral
+      4: Motivante
+      5: "Me energiza"
+    valor:
+
+potencial:
+  potencial_observado:
+    tipo:
+      conocimiento: false
+      software: false
+      hardware: false
+      negocio: false
+      inversion: false
+      red_de_contactos: false
+      infraestructura_bildung: false
+      mariposa_potencial: false
+      marca_personal: false
+  genera_valor_sin_presencia:
+    escala:
+      1: Nunca
+      2: Poco
+      3: Parcialmente
+      4: Mayormente
+      5: Sí
+    valor:
+
+escalabilidad:
+  dependencia_del_creador:
+    escala:
+      1: Total
+      2: "Muy alta"
+      3: Moderada
+      4: Baja
+      5: Mínima
+    valor:
+  posibilidad_de_delegacion:
+    escala:
+      1: Imposible
+      2: Difícil
+      3: Posible
+      4: Fácil
+      5: Natural
+    valor:
+
+capital:
+  inversion_inicial:
+  riesgo:
+    escala:
+      1: "Muy bajo"
+      2: Bajo
+      3: Medio
+      4: Alto
+      5: "Muy alto"
+    valor:
+  retorno_esperado:
+    tipo:
+      conocimiento: false
+      dinero: false
+      infraestructura: false
+      relaciones: false
+      experiencia: false
+
+sostenibilidad:
+  impacto_ecosistema_interno:
+    opciones: [Positivo, Neutral, Negativo]
+    valor:
+  riesgo_de_burnout:
+    escala:
+      1: "Muy bajo"
+      2: Bajo
+      3: Medio
+      4: Alto
+      5: "Muy alto"
+    valor:
+
+criterio_de_salida:
+  para_promocion:
+  para_compostaje:
+
+horizonte:
+  resultado_esperado:
+    3_meses:
+    1_ano:
+    3_anos:
+    10_anos:
+
+indicadores_bildung:
+  escala: [-2, -1, 0, 1, 2]
+  valores:
+    tiempo:
+    energia:
+    autonomia:
+    capacidad:
+    opcionalidad:
+
+evaluacion_final:
+  puntuacion_bildung:
+    convergencia:
+      escala: "0-10"
+      valor:
+    desbloqueo:
+      escala: "0-10"
+      valor:
+    libertad_futura:
+      escala: "0-10"
+      valor:
+    sostenibilidad:
+      escala: "0-10"
+      valor:
+    potencial:
+      escala: "0-10"
+      valor:
+  total:
+    valor:
+    accion:
+      rangos:
+        1:
+          rango: "0-10"
+          valor: Descartar
+        2:
+          rango: "11-20"
+          valor: Backlog
+        3:
+          rango: "21-35"
+          valor: Experimento
+        4:
+          rango: "36-50"
+          valor: "Proyecto estrategico"
+      valor:
+
+mariposa_potencial:
+  si_funciona_que_podria_ocurrir:
+  que_nueva_puerta_podria_abrir:
+  que_podria_cambiar_en_ecosistema_completo:
+
+decision:
+  acciones:
+    opciones:
+      - "Ejecutar ahora"
+      - "Promover al siguiente nivel"
+      - "Mantener en nivel actual"
+      - "Retroceder a nivel anterior"
+      - "Archivar (compostaje)"
+      - Delegar
+      - Descartar
+    valor:
+  razon:

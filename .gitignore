@@ -1,0 +1,36 @@
+# ─── Bildung .gitignore ───
+
+# System
+.stfolder/
+.git/
+
+# ─── Lab: niveles con contenido de proyectos (no versionado) ───
+# Se preserva la estructura con .gitkeep, el contenido es de cada proyecto
+
+Lab/1-workspace/*
+!Lab/1-workspace/.gitkeep
+
+Lab/2-modelado/*
+!Lab/2-modelado/.gitkeep
+
+Lab/3-dev/*
+!Lab/3-dev/.gitkeep
+
+Lab/4-activos/*
+!Lab/4-activos/.gitkeep
+
+Lab/5-infraestructura/*
+!Lab/5-infraestructura/.gitkeep
+
+Lab/6-archivo/*
+!Lab/6-archivo/.gitkeep
+
+# ─── Docs: solo versionar especificaciones, no archivos históricos ───
+Docs/archive/
+
+# ─── Archivos temporales y caché ───
+*.pyc
+__pycache__/
+venv/
+node_modules/
+.env

@@ -1,0 +1,213 @@
+plantilla: "Bildung - Evaluación de Experimentos y Proyectos"
+version: "1.1"
+filosofia: "No evaluar si una idea es buena. Evaluar si merece recursos."
+
+informacion_general:
+  nombre:
+  categoria:
+  fecha:
+  nivel_actual:
+    opciones:
+      - 1-workspace
+      - 2-modelado
+      - 3-dev
+      - 4-activos
+      - 5-infraestructura
+      - 6-archivo
+    valor:
+  nivel_objetivo:
+    opciones:
+      - activo
+      - infraestructura
+      - mariposa
+    valor:
+  autor:
+
+proposito:
+  problema_que_resuelve:
+  por_que_existe:
+
+regla_de_convergencia:
+  mision: "Transformar complejidad en libertad."
+  como_contribuye:
+  libertad_que_genera:
+    tiempo: false
+    energia: false
+    dinero: false
+    conocimiento: false
+    autonomia: false
+    opcionalidad: false
+    escalabilidad: false
+  complejidad_que_elimina:
+
+direcciones_estrategicas:
+  escala: "0 a 5"
+  valores:
+    capital:
+    conocimiento:
+    sistemas:
+    ecosistema:
+    sostenibilidad:
+  justificacion:
+
+analisis_de_desbloqueo:
+  nota: "Sección más importante"
+  que_desbloquea:
+    ejemplo: "Aprender Docker → Contenedores → Despliegue → Servidores → Arquitectura distribuida → DevOps"
+    respuesta:
+  valor_de_desbloqueo:
+    escala:
+      1: Aislado
+      2: "Poco reutilizable"
+      3: Útil
+      4: Multiplicador
+      5: "Multiplicador masivo"
+    valor:
+
+energia:
+  requerida:
+    escala:
+      1: "Muy baja"
+      2: Baja
+      3: Moderada
+      4: Alta
+      5: "Muy alta"
+    valor:
+  compatibilidad_con_estado_actual:
+    escala:
+      1: "Me drena"
+      2: "Difícil de sostener"
+      3: Neutral
+      4: Motivante
+      5: "Me energiza"
+    valor:
+
+potencial:
+  tipo:
+    conocimiento: false
+    software: false
+    hardware: false
+    negocio: false
+    inversion: false
+    red_de_contactos: false
+    infraestructura_bildung: false
+    mariposa_potencial: false
+    marca_personal: false
+  genera_valor_sin_presencia:
+    escala:
+      1: Nunca
+      2: Poco
+      3: Parcialmente
+      4: Mayormente
+      5: Sí
+    valor:
+
+escalabilidad:
+  dependencia_del_creador:
+    escala:
+      1: Total
+      2: "Muy alta"
+      3: Moderada
+      4: Baja
+      5: Mínima
+    valor:
+  posibilidad_de_delegacion:
+    escala:
+      1: Imposible
+      2: Difícil
+      3: Posible
+      4: Fácil
+      5: Natural
+    valor:
+
+capital:
+  inversion_inicial:
+  riesgo:
+    escala:
+      1: "Muy bajo"
+      2: Bajo
+      3: Medio
+      4: Alto
+      5: "Muy alto"
+    valor:
+  retorno_esperado:
+    conocimiento: false
+    dinero: false
+    infraestructura: false
+    relaciones: false
+    experiencia: false
+
+sostenibilidad:
+  impacto_ecosistema_interno:
+    opciones: [Positivo, Neutral, Negativo]
+    valor:
+  riesgo_de_burnout:
+    escala:
+      1: "Muy bajo"
+      2: Bajo
+      3: Medio
+      4: Alto
+      5: "Muy alto"
+    valor:
+
+criterio_de_salida:
+  para_promocion:
+  para_compostaje:
+
+horizonte:
+  resultado_esperado:
+    3_meses:
+    1_ano:
+    3_anos:
+    10_anos:
+
+indicadores_bildung:
+  escala: [-2, -1, 0, 1, 2]
+  valores:
+    tiempo:
+    energia:
+    autonomia:
+    capacidad:
+    opcionalidad:
+
+evaluacion_final:
+  puntuacion_bildung:
+    convergencia:
+      escala: "0-10"
+      valor:
+    desbloqueo:
+      escala: "0-10"
+      valor:
+    libertad_futura:
+      escala: "0-10"
+      valor:
+    sostenibilidad:
+      escala: "0-10"
+      valor:
+    potencial:
+      escala: "0-10"
+      valor:
+  total:
+    valor:
+    rangos:
+      0_20: Descartar
+      21_35: Backlog
+      36_50: Experimento
+      51_70: "Proyecto estratégico"
+
+mariposa_potencial:
+  si_funciona_que_podria_ocurrir:
+  que_nueva_puerta_podria_abrir:
+  que_podria_cambiar_en_ecosistema_completo:
+
+decision:
+  opciones:
+    - "Ejecutar ahora"
+    - "Promover al siguiente nivel"
+    - "Mantener en nivel actual"
+    - "Retroceder a nivel anterior"
+    - "Archivar (compostaje)"
+    - Delegar
+    - Descartar
+  valor:
+  razon:
