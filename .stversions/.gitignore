@@ -1,0 +1,9 @@
+**/1-workspace/*
+**/2-modellado/*
+**/3-dev/*
+**/4-activos/*
+**/5-infraestructura/*
+**/6-archivo/*
+!documentation
+!archive
+codex

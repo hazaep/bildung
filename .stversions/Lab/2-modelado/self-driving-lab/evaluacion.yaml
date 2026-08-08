@@ -1,0 +1,135 @@
+plantilla: "Bildung - Evaluación de Experimentos y Proyectos"
+version: "1.1"
+
+informacion_general:
+  nombre: self-driving-lab
+  categoria: Infraestructura Cognitiva / Agentes
+  fecha: 2026-08-07
+  nivel_actual: 2-modelado
+  nivel_objetivo: infraestructura
+  autor: Hazael
+
+proposito:
+  problema_que_resuelve: "Bildung no es machine-parseable. La documentación, métricas y telemetría requieren intervención humana para cada operación. Esto limita el throughput del sistema e impide la delegación cognitiva."
+  por_que_existe: "Para diseñar las capas que permitan a agentes (y humanos) leer, consultar, actualizar y navegar Bildung con fricción mínima, convirtiendo al ecosistema en un sistema operativo cognitivo distribuido."
+
+regla_de_convergencia:
+  mision: "Transformar complejidad en libertad."
+  como_contribuye: "Automatizar la captura y procesamiento de métricas libera al arquitecto de tareas administrativas y permite escalar la capacidad exploratoria del Lab mediante agentes semiautónomos."
+  libertad_que_genera:
+    tiempo: true
+    energia: true
+    dinero: false
+    conocimiento: true
+    autonomia: true
+    opcionalidad: true
+    escalabilidad: true
+  complejidad_que_elimina: "Fricción de documentación manual. Cuello de botella del arquitecto como único observador activo. Imposibilidad de delegar exploración."
+
+direcciones_estrategicas:
+  escala: "0 a 5"
+  valores:
+    capital: 1
+    conocimiento: 5
+    sistemas: 5
+    ecosistema: 4
+    sostenibilidad: 3
+  justificacion: "El proyecto es fundamentalmente sobre Sistemas (hacer Bildung operable por máquinas) y Conocimiento (aumentar resolución del ecosistema)."
+
+analisis_de_desbloqueo:
+  que_desbloquea:
+    respuesta: |
+      Fase 1: YAML ↔ MD parsing → documentación estructurada
+      Fase 2: Memoria, consultas y actualizaciones → agentes pueden leer/escribir Bildung
+      Fase 3: Recaudo y procesamiento → dashboards, reportes, métricas agregadas
+      → Branch Lab viable (agentes necesitan EAL para operar)
+      → Delegación Ontológica viable (gobernanza sin ejecución manual)
+      → Bildung como CAS multi-agente
+  valor_de_desbloqueo:
+    valor: 5
+
+energia:
+  requerida:
+    valor: 4
+  compatibilidad_con_estado_actual:
+    valor: 5
+
+potencial:
+  tipo:
+    conocimiento: true
+    software: true
+    infraestructura_bildung: true
+    mariposa_potencial: true
+  genera_valor_sin_presencia:
+    valor: 4
+
+escalabilidad:
+  dependencia_del_creador:
+    valor: 2
+  posibilidad_de_delegacion:
+    valor: 5
+
+capital:
+  inversion_inicial: "Tiempo de desarrollo + cómputo para agentes"
+  riesgo:
+    valor: 3
+  retorno_esperado:
+    conocimiento: true
+    infraestructura: true
+    relaciones: false
+    dinero: false
+    experiencia: true
+
+sostenibilidad:
+  impacto_ecosistema_interno:
+    valor: Positivo
+  riesgo_de_burnout:
+    valor: 2
+
+criterio_de_salida:
+  para_promocion: "2-modelado: los 3 experimentos tienen hipótesis formales + bitácoras activas. Se detectaron patrones entre experimentos."
+  para_compostaje: "Ninguno de los 3 experimentos muestra tracción después de 2 meses de iteración."
+
+horizonte:
+  resultado_esperado:
+    3_meses: "EAL funcional sobre Bildung. Primer agente navegando el Lab con contexto controlado."
+    1_ano: "Branch Lab operativo. Agentes ejecutando experimentos simples con supervisión mínima."
+    3_anos: "CAS multi-agente. El arquitecto dedica la mayor parte del tiempo a gobernanza."
+    10_anos: "Bildung como ecosistema cognitivo distribuido con múltiples nodos autónomos."
+
+indicadores_bildung:
+  valores:
+    tiempo: 2
+    energia: 1
+    autonomia: 2
+    capacidad: 2
+    opcionalidad: 2
+
+evaluacion_final:
+  puntuacion_bildung:
+    convergencia:
+      valor: 9
+    desbloqueo:
+      valor: 10
+    libertad_futura:
+      valor: 9
+    sostenibilidad:
+      valor: 7
+    potencial:
+      valor: 10
+  total:
+    valor: 45
+    rangos:
+      0_20: Descartar
+      21_35: Backlog
+      36_50: Experimento
+      51_70: "Proyecto estratégico"
+
+mariposa_potencial:
+  si_funciona_que_podria_ocurrir: "Bildung se convierte en un CAS multi-agente donde el arquitecto diseña el entorno y los agentes exploran, construyen y reportan. El throughput del sistema aumenta en órdenes de magnitud."
+  que_nueva_puerta_podria_abrir: "Colaboración con otros arquitectos. Agentes especializados por dominio. Un mercado de skills para agentes Bildung."
+  que_podria_cambiar_en_ecosistema_completo: "La naturaleza misma del Lab: de ser un entorno mono-arquitecto a ser una ecología de agentes especializados con gobernanza común."
+
+decision:
+  valor: "Ejecutar como experimento"
+  razon: "Alta mariposa potencial. Convergencia máxima con la Estrella Polar. Los 3 experimentos internos ya emergieron del caos — solo falta formalizarlos."
