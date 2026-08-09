@@ -1,8 +1,10 @@
 # ─── Bildung .gitignore ───
 
 # System
+.stversions
 .stfolder/
 .git/
+on
 
 # ─── Lab: niveles con contenido de proyectos (no versionado) ───
 # Se preserva la estructura con .gitkeep, el contenido es de cada proyecto
