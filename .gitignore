@@ -1,7 +1,7 @@
 # ─── Bildung .gitignore ───
 
 # System
-.stversions
+.stversions/
 .stfolder/
 .git/
 on
@@ -29,6 +29,7 @@ Lab/6-archivo/*
 
 # ─── Docs: solo versionar especificaciones, no archivos históricos ───
 Docs/archive/
+docs/archive/
 
 # ─── Archivos temporales y caché ───
 *.pyc
