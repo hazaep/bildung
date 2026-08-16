@@ -1,0 +1,46 @@
+# Traefik — Stack independiente (FUNDACIÓN, intocable)
+#
+# Este stack posee la red `edge`. Los servicios de services/ la referencian
+# como external. NO hacer `docker compose down` aquí salvo mantenimiento de
+# gobernanza: es el punto único de entrada HTTP del nodo.
+
+services:
+  traefik:
+    image: traefik:v3
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      # API + dashboard (servido vía router, no puerto directo)
+      - "--api.dashboard=true"
+      # Proveedor Docker: descubre servicios por labels
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"   # solo traefik.enable=true
+      - "--providers.docker.network=edge"            # red donde vive todo
+      # Proveedor file: middlewares reutilizables
+      - "--providers.file.directory=/dynamic"
+      - "--providers.file.watch=true"
+      # Entrypoint HTTP
+      - "--entrypoints.web.address=:80"
+      # Logs accesibles (no JSON, legible)
+      - "--accesslog=true"
+    ports:
+      - "80:80"
+    volumes:
+      # Descubrimiento de servicios (solo lectura)
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Middlewares file-based
+      - ./dynamic:/dynamic:ro
+    networks:
+      - edge
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=PathPrefix(`/dashboard`) || PathPrefix(`/api`)"
+      - "traefik.http.routers.dashboard.entrypoints=web"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      # Middleware de seguridad común (definido en dynamic/)
+      - "traefik.http.routers.dashboard.middlewares=security-headers@file"
+
+networks:
+  edge:
+    name: edge
+    driver: bridge
