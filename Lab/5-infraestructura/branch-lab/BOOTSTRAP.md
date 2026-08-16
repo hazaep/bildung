@@ -290,30 +290,42 @@ sudo reboot
 #   - docker ps → traefik + whoami corriendo
 ```
 
+**Resultado (2026-08-16):** ✅ PASS en el nodo de referencia.
+- reboot → vuelve solo (~75s), WiFi reconecta sola (conexión de sistema vía NetworkManager)
+- ssh, tailscaled (IP intacta), docker, ufw, cptr: todos `active` sin intervención
+- traefik + whoami: auto-reiniciados por `restart: unless-stopped`
+
+> ⚠️ **Caveat de hardware (nodos SIN batería):** si el equipo **se apaga** en lugar
+> de reiniciar (no vuelve a la red), es un problema de **fuente de alimentación**
+> (pico de demanda sin fallback a batería), **no** de configuración. Verificar
+> físicamente: ¿encendió? ¿LED de power? Si no volvió, encender manualmente y
+> re-ejecutar. La config del server es determinista y ya quedó validada.
+
 ---
 
 ## 6. Datos operativos del nodo de referencia
 
-| Campo | Valor |
-|---|---|
-| Hostname | `bildung` |
-| OS | Debian 13 (Trixie), kernel 6.12, x86_64 |
-| Hardware | 2 vCPU, 3.7 GiB RAM, 912 GB disco |
-| Tailscale IP | `100.71.214.45` |
-| LAN IP | `192.168.100.45` (WiFi `wlp2s0`) |
-| Magic DNS | `bildung.tail1a3dd6.ts.net` |
-| Syncthing device ID | `2C24BNU-F6MSUTS-HIF4TJ7-AZCRWDJ-XCHGKH6-YH6Y5JL-XCPTYRQ-WSBLJAG` |
-| cptr | `http://bildung.tail1a3dd6.ts.net:8000` |
-| Logs de bootstrap | `~/.bootstrap/logs/` |
-| Repo de contenedores | `~/docker/docker-branch-lab/` |
+| Campo                | Valor                                                             |
+| -------------------- | ----------------------------------------------------------------- |
+| Hostname             | `bildung`                                                         |
+| OS                   | Debian 13 (Trixie), kernel 6.12, x86_64                           |
+| Hardware             | 2 vCPU, 3.7 GiB RAM, 912 GB disco                                 |
+| Tailscale IP         | `100.71.214.45`                                                   |
+| LAN IP               | `192.168.100.45` (WiFi `wlp2s0`)                                  |
+| Magic DNS            | `bildung.tail1a3dd6.ts.net`                                       |
+| Syncthing device ID  | `2C24BNU-F6MSUTS-HIF4TJ7-AZCRWDJ-XCHGKH6-YH6Y5JL-XCPTYRQ-WSBLJAG` |
+| cptr                 | `http://bildung:8000`                                             |
+| Logs de bootstrap    | `~/.bootstrap/logs/`                                              |
+| Repo de contenedores | `~/docker/docker-branch-lab/`                                     |
 
 ---
 
 ## 7. Pendientes (decisión de gobernanza)
 
 - [ ] **Backup offsite**: timeshift cubre el SO, NO los volúmenes Docker. Evaluar MEGA 50GB vía mega-cli.
+- [ ] **Fuente de alimentación**: el nodo de referencia funciona SIN batería (solo fuente). Observar si hay apagones en picos de demanda; si se repiten, conseguir batería o fuente de mayor capacidad.
 - [ ] **Esquema definitivo de claves SSH** (una por agente; hoy es una común).
-- [ ] **Gateway API**: conectar cptr (Tech Lead) con Open WebUI (Arquitecto) — el flujo Arquitecto→Tech Lead.
+- [ ] **Gateway API**: conectar cptr con Open WebUI — el flujo Arquitecto→Tech Lead.
 - [ ] **open-webui/computer como workspace** formal del Tech Lead.
 - [ ] **Telemetría** del nodo → proyecto `telemetry`.
 - [ ] **code tool**: instalar `aider` + Cline CLI (comparación).
