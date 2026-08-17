@@ -268,6 +268,52 @@ journalctl --user -u cptr.service --no-pager | grep -oE "token=[a-f0-9]+" | head
 - El control de acceso entre nodos del tailnet mono-identidad vive en **ufw**
   de cada nodo, no en las ACLs de Tailscale.
 
+### Fase 4 — OpenCode (code tool del Tech Lead)
+
+OpenCode es el code tool del **Tech Lead**: sub-agents con contexto aislado,
+OpenAI-compatible (deepseek/openrouter) y CLI. Instalación **host nativo**
+(binario standalone, no requiere node).
+
+```bash
+# 4.1 instalar (binario standalone en ~/.opencode/bin)
+curl -fsSL https://opencode.ai/install | bash
+# el instalador agrega 'export PATH=$HOME/.opencode/bin:$PATH' a ~/.bashrc
+
+# 4.2 verificar versión (>= 1.14.24 para deepseek)
+~/.opencode/bin/opencode --version
+
+# 4.3 configurar provider (interactivo, lo hace Hazael)
+#   opencode → /connect → deepseek → pegar API key
+#   (queda en ~/.local/share/opencode/auth.json)
+```
+
+**Gotchas críticos (validados en vivo, 2026-08-16):**
+
+| Gotcha | Detalle | Solución |
+|---|---|---|
+| `opencode run` **requiere TTY** | Sin TTY se cuelga silenciosamente sin output | Envolver con `script -qec "..." /dev/null` |
+| `--auto` **obligatorio** para no-interactivo | Sin él, espera aprobación de permisos eternamente | `--auto` auto-aprueba permisos no denegados |
+| Sub-agents **no se invocan con `--agent`** | `--agent general` hace fallback al agente `build` | Se invocan por **delegación interna** del agente primary |
+
+**Estructura de agentes de OpenCode:**
+
+```
+primary:  build     ← ejecuta, escribe, orquesta (el Tech Lead)
+          plan      ← modo planificación (el Arquitecto)
+subagent: explore   ← investigación de solo lectura (contexto aislado)
+          general   ← tareas generales, puede editar
+(compaction)        ← compresión automática de contexto
+```
+
+**Comando de referencia (delegación no-interactiva):**
+```bash
+script -qec "opencode run --model deepseek/deepseek-v4-pro --auto 'tarea'" /dev/null
+```
+
+**Validación (2026-08-16):** ✅ deepseek-v4-pro operativo. Agente `build` creó
+archivos con tool `Write`. Delegó a `Explore Agent` (sub-agente) que corrió en
+contexto aislado y devolvió solo el resultado final.
+
 ---
 
 ## 5. Pruebas de validación (checklist final)
@@ -308,6 +354,15 @@ ss -tlnp | grep :8000                               # → LISTEN 0.0.0.0:8000
 curl -s -o /dev/null -w "%{http_code}" http://100.71.214.45:8000/  # → 200 (tailnet)
 # Desde un cliente LAN externo (NO desde el propio nodo):
 curl -s -o /dev/null -w "%{http_code}" http://192.168.100.45:8000/  # → 000 (denegado, correcto)
+```
+
+### Fase 4 (OpenCode)
+```bash
+~/.opencode/bin/opencode --version                  # → >= 1.14.24
+~/.opencode/bin/opencode models | grep deepseek     # → deepseek/deepseek-v4-pro listado
+# test funcional (escribe archivos):
+cd /tmp && script -qec "~/.opencode/bin/opencode run --model deepseek/deepseek-v4-pro --auto 'crea ok.txt con el texto hola'" /dev/null
+cat /tmp/ok.txt                                      # → hola
 ```
 
 ### Prueba definitiva (persistencia)
@@ -357,6 +412,8 @@ sudo reboot
 - [x] **Periodicidad de timeshift**: snapshot diario + retención 5 + timer horario `timeshift-check.timer` (Persistent). `schedule_daily=true` en `/etc/timeshift/timeshift.json`.
 - [ ] **Esquema definitivo de claves SSH** (una por agente; hoy es una común).
 - [ ] **Gateway API**: conectar cptr con Open WebUI — el flujo Arquitecto→Tech Lead.
-- [ ] **open-webui/computer como workspace** formal del Tech Lead.
+- [x] **code tool (OpenCode)**: instalado y validado. Sub-agents (explore/general) + deepseek-v4-pro operativos. `aider`/Cline descartados para este rol (sin sub-agents de contexto limpio).
+- [ ] **Workspaces del Tech Lead**: definir la estructura de directorios donde OpenCode opera (pendiente de diseño por Hazael).
+- [ ] **Gateway API**: conectar cptr con Open WebUI — el flujo Arquitecto→Tech Lead.
 - [ ] **Telemetría** del nodo → proyecto `telemetry`.
-- [ ] **code tool**: instalar `aider` + Cline CLI (comparación).
+- [ ] **Segunda code tool de comparación**: evaluar si hace falta (Cline u otro) una vez el Tech Lead esté en producción.
