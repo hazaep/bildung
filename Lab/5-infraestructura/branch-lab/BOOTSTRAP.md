@@ -102,6 +102,36 @@ Hazael la abre desde su teléfono (o dispositivo en tailnet) y crea el
 # 0.1 snapshot baseline (ANTES de tocar nada)
 sudo timeshift --create --comments "baseline-limpio-pre-docker" --tags D
 
+# 0.1b periodicidad de snapshots (diario + retención 5 + timer horario)
+# activar schedule_daily en el config (python, no sed: el JSON usa espacios)
+sudo python3 -c "
+import json
+p = '/etc/timeshift/timeshift.json'
+with open(p) as f: d = json.load(f)
+d['schedule_daily'] = 'true'
+with open(p, 'w') as f: json.dump(d, f, indent=4)
+"
+# timer horario que corre 'timeshift --check' (crea solo si toca)
+TSBIN=$(command -v timeshift)
+sudo tee /etc/systemd/system/timeshift-check.service > /dev/null <<EOF
+[Unit]
+Description=Timeshift scheduled snapshot check
+[Service]
+Type=oneshot
+ExecStart=$TSBIN --check --scripted
+EOF
+sudo tee /etc/systemd/system/timeshift-check.timer > /dev/null <<EOF
+[Unit]
+Description=Hourly check for scheduled timeshift snapshots
+[Timer]
+OnCalendar=hourly
+Persistent=true
+[Install]
+WantedBy=timers.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl enable --now timeshift-check.timer
+
 # 0.2 firewall: cerrar inbound, permitir SSH
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
@@ -324,6 +354,7 @@ sudo reboot
 
 - [ ] **Backup offsite**: timeshift cubre el SO, NO los volúmenes Docker. Evaluar MEGA 50GB vía mega-cli.
 - [ ] **Fuente de alimentación**: el nodo de referencia funciona SIN batería (solo fuente). Observar si hay apagones en picos de demanda; si se repiten, conseguir batería o fuente de mayor capacidad.
+- [x] **Periodicidad de timeshift**: snapshot diario + retención 5 + timer horario `timeshift-check.timer` (Persistent). `schedule_daily=true` en `/etc/timeshift/timeshift.json`.
 - [ ] **Esquema definitivo de claves SSH** (una por agente; hoy es una común).
 - [ ] **Gateway API**: conectar cptr con Open WebUI — el flujo Arquitecto→Tech Lead.
 - [ ] **open-webui/computer como workspace** formal del Tech Lead.
