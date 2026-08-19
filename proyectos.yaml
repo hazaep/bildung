@@ -1,0 +1,33 @@
+# proyectos.yaml — Manifiesto de versionado de Bildung
+#
+# La carpeta codifica el ESTADO (prefijo + semáforo):
+#   prefijo  WS/MOD/DEV  → nivel del gradiente (workspace / modelado / dev)
+#   semáforo GN/YEL/RD   → atención asignada (verde / amarillo / rojo)
+#
+# Este archivo codifica el LINAJE (repo/upstream). Datos no solapados →
+# no se desincronizan. Bildung versiona este manifiesto; cada repo
+# versiona lo suyo; referencia/ no se versiona.
+version: 1
+
+proyectos:            # propios (código nuestro, en lab/)
+  - { nombre: praxis,           ruta: lab/GN-DEV-praxis,           repo: null }
+  - { nombre: self-driving-lab, ruta: lab/GN-DEV-self-driving-lab, repo: null }
+  - { nombre: android,          ruta: lab/GN-WS-android,           repo: null }
+  - { nombre: open-webui,       ruta: lab/YEL-WS-open-webui,       repo: null }
+  - { nombre: alchemy,          ruta: lab/YEL-WS-alchemy,          repo: null }
+  - { nombre: symctx,           ruta: lab/RD-MOD-symctx,           repo: null }
+  - { nombre: website,          ruta: lab/RD-WS-website,           repo: null }
+  - { nombre: esp32-runtime,    ruta: "lab/RD-WS-esp32-runtime",   repo: null }
+  - { nombre: spotify,          ruta: lab/RD-WS-spotify,           repo: null }
+  - { nombre: cronologia,       ruta: lab/RD-WS-cronologia,        repo: null }
+  - { nombre: apix,             ruta: lab/RD-WS-apix,              repo: git@github.com:hazaep/apix.git }
+  - { nombre: telemetry,        ruta: lab/RD-WS-telemetry,         repo: git@github.com:hazaep/zsh-telemetry.git }
+
+referencias:          # externo / terceros (gitignored)
+  - { nombre: shifu,             ruta: referencia/shifu,           upstream: git@github.com:hazaep/shifu.git }
+  - { nombre: yantra-app-launcher, ruta: referencia/yantra_launcher, upstream: https://github.com/coderGtm/yantra-app-launcher.git }
+
+infraestructura:      # operativo (repo propio o pendiente)
+  - { nombre: docker-server, ruta: infraestructura/docker-server, repo: git@github.com:hazaep/docker-server.git }
+  - { nombre: branch-lab,    ruta: infraestructura/branch-lab,    repo: null }
+  - { nombre: rpi4b-server,  ruta: infraestructura/rpi4b-server,  repo: null }

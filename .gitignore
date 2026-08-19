@@ -1,37 +1,28 @@
 # ─── Bildung .gitignore ───
 
-# System
+# System / sync
 .stversions/
 .stfolder/
 .git/
+
+# Artefacto runtime de la EAL (mapea el árbol; reaparece)
 on
+on/
 
-# ─── Lab: niveles con contenido de proyectos (no versionado) ───
-# Se preserva la estructura con .gitkeep, el contenido es de cada proyecto
+# ─── Contenido NO versionado en bildung ───
+# lab/            → proyectos en gradiente (la carpeta codifica el estado)
+# activos/        → opera sin intervención
+# infraestructura/→ modifica al sistema
+# referencia/     → clones externos (historial vive en upstream)
+lab/
+activos/
+infraestructura/
+referencia/
 
-Lab/1-workspace/*
-!Lab/1-workspace/.gitkeep
-
-Lab/2-modelado/*
-!Lab/2-modelado/.gitkeep
-
-Lab/3-dev/*
-!Lab/3-dev/.gitkeep
-
-Lab/4-activos/*
-!Lab/4-activos/.gitkeep
-
-Lab/5-infraestructura/*
-!Lab/5-infraestructura/.gitkeep
-
-Lab/6-archivo/*
-!Lab/6-archivo/.gitkeep
-
-# ─── Docs: solo versionar especificaciones, no archivos históricos ───
-Docs/archive/
+# ─── Docs: solo specs, no histórico ───
 docs/archive/
 
-# ─── Archivos temporales y caché ───
+# ─── Caché ───
 *.pyc
 __pycache__/
 venv/

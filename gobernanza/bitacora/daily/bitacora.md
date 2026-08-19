@@ -1,0 +1,21 @@
+# Bitácora de gobernanza
+
+- 2026-08-07: se añadio estructura_interna_proyecto_experimental.md propuesta por el proyecto self-driving-lab
+- 2026-08-08: inicia versionado con git de bildung
+- 2026-08-09: comienza prototipado de sistema agentico
+- 2026-08-10: EAL cierra Fase II con 9 ciclos completados. Stack Bildung completo: docs→BD→git→OS→archivos→contenedores. 6 adapters. Validación en producción RPi4B con 16 contenedores reales. Smoke test 6/6 PASS.
+- 2026-08-10: Fase III autorizada: Ciclo 10 (code + deps adapters) y Ciclo 11 (lint + diff adapters).
+- 2026-08-10: Patrón Mariposa detectado — modifica Bildung mismo. Entropía alta con rutas complicadas. Necesidad de anclas de contexto para agentes.
+- 2026-08-10: decisión arquitectónica: Branch Lab con Debian 13 SSH server (sin desktop). Se abolirá `.gob` pero no su contenido. Separación de código vivo vs sistema administrativo.
+- 2026-08-10: Codex agentico pendiente: prototipo basado en gradientes de resolución, no solo definiciones.
+- 2026-08-10: nuevo gradiente: diseñar el proyecto genera ancla y referencias. Abolir referencias a documentación de Bildung en contextos de agentes — solo necesitan su tarea.
+- 2026-08-13: Branch Lab bootstrap. Fase 0 (timeshift, ufw, hardening SSH, unattended-upgrades, NTP) y Fase 1 (Tailscale, Syncthing). Decisiones: Debian 13 headless, firewall cerrado sin IP fija, claves una por agente (pendiente), sudo NOPASSWD, grupo docker (delegación absoluta).
+- 2026-08-13: Fase 2 (Docker CE + compose + containerd, git + SSH key en GitHub). Traefik desplegado en stack independiente (red 'edge') + whoami de prueba. Ruteo por PathPrefix vía Magic DNS, sin cloudflared (solo Tailscale).
+- 2026-08-13: cptr (Open WebUI Computer) instalado HOST NATIVO como infraestructura de administración. systemd user service + linger. Puerto 8000 solo tailnet. Se entiende el Gateway API (workspace como modelo OpenAI-compatible) → futuro flujo Arquitecto→Tech Lead.
+- 2026-08-16: reboot test. Test #1 el nodo se apagó físicamente (fuente sin batería, pico de demanda). Test #2 PASS: vuelve solo ~75s, WiFi reconecta, todos los servicios activos. Caveat de hardware documentado.
+- 2026-08-16: timeshift periodicidad programada (diario + timer horario Persistent). El paquete Debian no trae disparador; JSON usa espacios antes de ':' (sed falla, usar python).
+- 2026-08-16: OpenCode instalado y validado como code tool del Tech Lead (deepseek-v4-pro). Sub-agents con contexto aislado confirmados (build delegó a Explore Agent). Gotchas: requiere TTY (script -qec), --auto para no-interactivo. Arquitectura de agentes de cptr definida (Gobernanza→Arquitecto-Diseñador Open WebUI→Arquitecto-Ejecutor cptr→Tech Lead OpenCode). Pendiente: definir workspaces.
+- 2026-08-17: switch de entorno — el agente pasó a correr LOCAL en bildung (ya no en server haza). Ya no se necesita el gateway para el transporte del ancla: los items viajan como archivos, la automatización verifica/normaliza, el agente local procesa. Syncthing sigue (sync a server-rpi4b, no urgente).
+- 2026-08-17: estructura de workspaces definida: ~/architect/ (INBOX sync + workspace Arquitecto-Ejecutor, con plan/briefs/reportes/cierre) y ~/.bildung/ (workspace Tech Lead OpenCode, un dir por proyecto). Ciclo de vida de items resuelto: run termina siempre, item solo concluye por éxito explícito o decisión humana.
+- 2026-08-17: puerta de rechazo establecida (evidencia de campo). Item inválido/ambiguo/prematuro = rechazo, no interpretación. Formato de flag: rejected-v1-<item>--motivo. Estados de espera no son conclusión.
+- 2026-08-17: Praxis formalizada como contraparte agéntica del Codex. Capas: ontos/nomos/hypostasis/taxis/tekhne. Nomos=ley, Taxis=jurisdicción. Primeras 2 entradas de Ontos creadas con poka-yoke en títulos: protocolo-instalacion-dependencias y protocolo-puerta-rechazo. Ubicación temporal: 1-workspace/prototipado/praxis/.
